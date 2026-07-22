@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Special Surprise</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+/* CSS Part 2 me aayega */
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Floating Background -->
+<div id="hearts"></div>
+
+<!-- Page 1 -->
+<section id="page1" class="page active">
+
+<div class="envelope">
+
+<div class="flap"></div>
+
+<div class="letter">
+
+<h2>💌</h2>
+
+<p>Tap to Open</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Page 2 -->
+<section id="page2" class="page">
+
+<div class="glass">
+
+<h1>A Special Surprise ✨</h1>
+
+<p>
+Thank you for being part of this beautiful journey.
+</p>
+
+<button id="continueBtn">
+Continue
+</button>
+
+</div>
+
+</section>
+
+<!-- Page 3 -->
+<section id="page3" class="page">
+
+<div class="glass">
+
+<h1>One More Step 🌸</h1>
+
+<button id="nextBtn">
+
+Continue
+
+</button>
+
+</div>
+
+</section>
+
+<!-- Page 4 -->
+<section id="page4" class="page">
+
+<div class="glass">
+
+<h1>A Message 💜</h1>
+
+<p id="message">
+
+Sometimes a few words can make someone's day brighter.
+Thank you for always being kind and wonderful.
+
+</p>
+
+<button id="surpriseBtn">
+
+Reveal Surprise
+
+</button>
+
+</div>
+
+</section>
+
+<!-- Page 5 -->
+
+<section id="page5" class="page">
+
+<div class="glass">
+
+<h1>🎁 Scratch To Reveal</h1>
+
+<canvas id="scratch"></canvas>
+
+<div id="hiddenImage">
+
+⭐ Surprise Revealed ⭐
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+/* JavaScript Part 3 me aayega */
+
+</script>
+
+</body>
+</html>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+overflow:hidden;
+background:linear-gradient(-45deg,#4b0082,#6a0dad,#ff4fd8,#ff87d7);
+background-size:400% 400%;
+animation:bgMove 15s ease infinite;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.page{
+position:absolute;
+width:100%;
+height:100vh;
+display:none;
+justify-content:center;
+align-items:center;
+padding:25px;
+}
+
+.page.active{
+display:flex;
+animation:fade .8s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:scale(.96);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+.glass{
+width:90%;
+max-width:430px;
+padding:30px;
+text-align:center;
+border-radius:28px;
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.3);
+box-shadow:0 0 40px rgba(255,105,255,.35);
+color:#fff;
+}
+
+.glass h1{
+font-family:'Great Vibes',cursive;
+font-size:46px;
+margin-bottom:15px;
+}
+
+.glass p{
+font-size:17px;
+line-height:1.8;
+opacity:.95;
+}
+
+button{
+margin-top:25px;
+padding:15px 35px;
+border:none;
+border-radius:50px;
+font-size:18px;
+font-weight:700;
+cursor:pointer;
+color:#fff;
+background:linear-gradient(135deg,#ff4fd8,#ff87d7);
+box-shadow:
+0 10px 20px rgba(255,0,150,.35),
+inset 0 2px 4px rgba(255,255,255,.4);
+transition:.3s;
+}
+
+button:hover{
+transform:translateY(-4px) scale(1.05);
+}
+
+.envelope{
+width:300px;
+height:210px;
+background:#ff87d7;
+border-radius:12px;
+position:relative;
+cursor:pointer;
+box-shadow:0 20px 40px rgba(0,0,0,.3);
+}
+
+.flap{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:110px;
+background:#ff4fd8;
+clip-path:polygon(0 0,100% 0,50% 100%);
+transform-origin:top;
+transition:1s;
+}
+
+.letter{
+position:absolute;
+width:88%;
+height:82%;
+left:6%;
+top:10%;
+background:white;
+border-radius:12px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:#ff4fd8;
+font-weight:bold;
+transition:1s;
+}
+
+.envelope:hover .flap{
+transform:rotateX(180deg);
+}
+
+.envelope:hover .letter{
+transform:translateY(-35px);
+}
+
+#hearts{
+position:fixed;
+width:100%;
+height:100%;
+overflow:hidden;
+pointer-events:none;
+}
+
+.heart{
+position:absolute;
+bottom:-30px;
+font-size:22px;
+animation:floatUp linear forwards;
+}
+
+@keyframes floatUp{
+0%{
+transform:translateY(0) scale(.5);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+100%{
+transform:translateY(-120vh) scale(1.5);
+opacity:0;
+}
+}
+
+#scratch{
+width:100%;
+height:220px;
+border-radius:20px;
+background:#ccc;
+margin-top:20px;
+}
+
+#hiddenImage{
+display:flex;
+justify-content:center;
+align-items:center;
+height:220px;
+font-size:30px;
+font-weight:bold;
+color:white;
+background:linear-gradient(135deg,#ff4fd8,#8a2be2);
+border-radius:20px;
+display:none;
+}
+// Floating Hearts
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML=["💖","💕","💜","✨","🌸"][Math.floor(Math.random()*5)];
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(18+Math.random()*22)+"px";
+
+heart.style.animationDuration=(5+Math.random()*5)+"s";
+
+document.getElementById("hearts").appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},10000);
+
+}
+
+setInterval(createHeart,300);
+
+// Change Page
+
+function showPage(id){
+
+document.querySelectorAll(".page").forEach(page=>{
+
+page.classList.remove("active");
+
+});
+
+document.getElementById(id).classList.add("active");
+
+}
+
+// Envelope Open
+
+document.querySelector(".envelope").onclick=function(){
+
+document.querySelector(".flap").style.transform="rotateX(180deg)";
+
+document.querySelector(".letter").style.transform="translateY(-60px)";
+
+setTimeout(()=>{
+
+showPage("page2");
+
+},1200);
+
+}
+
+// Continue Button
+
+document.getElementById("continueBtn").onclick=function(){
+
+showPage("page3");
+
+}
+
+// Next Button
+
+document.getElementById("nextBtn").onclick=function(){
+
+showPage("page4");
+
+}
+
+// Surprise Button
+
+document.getElementById("surpriseBtn").onclick=function(){
+
+showPage("page5");
+
+}
+// ===== Flower Transition =====
+
+function flowerTransition(nextPage){
+
+const overlay=document.createElement("div");
+
+overlay.style.position="fixed";
+overlay.style.left="0";
+overlay.style.top="0";
+overlay.style.width="100%";
+overlay.style.height="100%";
+overlay.style.background="radial-gradient(circle,#ff69d9,#8a2be2)";
+overlay.style.display="flex";
+overlay.style.justifyContent="center";
+overlay.style.alignItems="center";
+overlay.style.zIndex="9999";
+overlay.style.animation="fadeIn .4s";
+
+overlay.innerHTML=`
+<div style="
+font-size:120px;
+animation:flowerBloom 1s ease forwards;
+">
+🌸
+</div>
+`;
+
+document.body.appendChild(overlay);
+
+setTimeout(()=>{
+overlay.remove();
+showPage(nextPage);
+},1200);
+
+}
+
+// Replace Button Action
+
+document.getElementById("surpriseBtn").onclick=function(){
+
+flowerTransition("page5");
+
+}
+
+// ===== Scratch Reveal =====
+
+const canvas=document.getElementById("scratch");
+
+const ctx=canvas.getContext("2d");
+
+canvas.width=350;
+canvas.height=220;
+
+ctx.fillStyle="#ff66cc";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="white";
+ctx.font="bold 24px Poppins";
+ctx.textAlign="center";
+ctx.fillText("Scratch Here ✨",175,115);
+
+ctx.globalCompositeOperation="destination-out";
+
+let drawing=false;
+
+function scratch(e){
+
+if(!drawing) return;
+
+let rect=canvas.getBoundingClientRect();
+
+let x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
+
+let y=(e.touches?e.touches[0].clientY:e.clientY)-rect.top;
+
+ctx.beginPath();
+
+ctx.arc(x,y,18,0,Math.PI*2);
+
+ctx.fill();
+
+}
+
+canvas.addEventListener("mousedown",()=>drawing=true);
+
+canvas.addEventListener("mouseup",()=>drawing=false);
+
+canvas.addEventListener("mousemove",scratch);
+
+canvas.addEventListener("touchstart",()=>drawing=true);
+
+canvas.addEventListener("touchend",()=>drawing=false);
+
+canvas.addEventListener("touchmove",scratch);
+
+setTimeout(()=>{
+
+document.getElementById("hiddenImage").style.display="flex";
+
+},5000);
+
+// ===== Animation =====
+
+const style=document.createElement("style");
+
+style.innerHTML=`
+
+@keyframes flowerBloom{
+
+0%{
+
+transform:scale(0) rotate(0deg);
+
+opacity:0;
+
+}
+
+100%{
+
+transform:scale(2.5) rotate(360deg);
+
+opacity:1;
+
+}
+
+}
+
+`;
+
+document.head.appendChild(style);
+// ===== Premium Loading Screen =====
+
+const loader=document.createElement("div");
+
+loader.id="loader";
+
+loader.innerHTML=`
+<div class="loaderBox">
+<div class="spinner"></div>
+<h2>Preparing Your Surprise...</h2>
+</div>
+`;
+
+document.body.appendChild(loader);
+
+const loaderStyle=document.createElement("style");
+
+loaderStyle.innerHTML=`
+
+#loader{
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#6a0dad,#ff4fd8);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:99999;
+transition:1s;
+}
+
+.loaderBox{
+text-align:center;
+color:white;
+}
+
+.spinner{
+width:70px;
+height:70px;
+border:6px solid rgba(255,255,255,.2);
+border-top:6px solid white;
+border-radius:50%;
+margin:auto;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
+.musicBtn{
+position:fixed;
+top:20px;
+right:20px;
+width:55px;
+height:55px;
+border-radius:50%;
+font-size:24px;
+z-index:999;
+}
+
+`;
+
+document.head.appendChild(loaderStyle);
+
+window.onload=function(){
+
+setTimeout(()=>{
+
+loader.style.opacity="0";
+
+setTimeout(()=>{
+
+loader.remove();
+
+},1000);
+
+},1800);
+
+};
+
+// ===== Background Music Button =====
+
+const music=document.createElement("audio");
+
+music.loop=true;
+
+// Apni music file ka naam yahan likho
+music.src="music.mp3";
+
+document.body.appendChild(music);
+
+const btn=document.createElement("button");
+
+btn.className="musicBtn";
+
+btn.innerHTML="🎵";
+
+document.body.appendChild(btn);
+
+let playing=false;
+
+btn.onclick=function(){
+
+if(playing){
+
+music.pause();
+
+btn.innerHTML="🎵";
+
+}else{
+
+music.play();
+
+btn.innerHTML="🔊";
+
+}
+
+playing=!playing;
+
+};
+
+// ===== Sparkle Effect =====
+
+setInterval(()=>{
+
+const star=document.createElement("div");
+
+star.innerHTML="✨";
+
+star.style.position="fixed";
+
+star.style.left=Math.random()*100+"vw";
+
+star.style.top=Math.random()*100+"vh";
+
+star.style.fontSize=(10+Math.random()*15)+"px";
+
+star.style.pointerEvents="none";
+
+star.style.animation="fadeStar 2s linear forwards";
+
+document.body.appendChild(star);
+
+setTimeout(()=>{
+
+star.remove();
+
+},2000);
+
+},250);
+
+const sparkle=document.createElement("style");
+
+sparkle.innerHTML=`
+
+@keyframes fadeStar{
+
+0%{
+opacity:0;
+transform:scale(.5);
+}
+
+30%{
+opacity:1;
+}
+
+100%{
+opacity:0;
+transform:translateY(-40px) scale(1.8);
+}
+
+}
+
+`;
+
+document.head.appendChild(sparkle);
+#A600FF to
